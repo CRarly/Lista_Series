@@ -1,1 +1,32 @@
-
+{
+    "Série": {
+        "AGENTES INTELIGENTES": {
+            "season": "2",
+            "episode": "1",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 22:23:11"
+        },
+        "tyty": {
+            "season": "5",
+            "episode": "3",
+            "status": "Não finalizado",
+            "date": "26/02/2025, 00:38:46"
+        }
+    },
+    "Desenho": {
+        "Trilha da Graduação - UCB": {
+            "season": "1",
+            "episode": "1",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 22:38:29"
+        }
+    },
+    "Filme": {
+        "xvvc": {
+            "season": "5",
+            "episode": "4",
+            "status": "Não finalizado",
+            "date": "26/02/2025, 00:31:43"
+        }
+    }
+}
