@@ -15,8 +15,8 @@
         "Titãs DC": {
             "season": "2",
             "episode": "1",
-            "status": "Finalizado",
-            "date": "26/02/2025, 02:02:03"
+            "status": "Não finalizado",
+            "date": "26/02/2025, 01:58:17"
         },
         "The Umbrela Academy": {
             "season": "4",
@@ -239,6 +239,12 @@
             "episode": "37",
             "status": "Finalizado",
             "date": "25/02/2025, 21:47:50"
+        },
+        "AGENTES INTELIGENTES": {
+            "season": "4",
+            "episode": "1",
+            "status": "Não finalizado",
+            "date": "26/02/2025, 02:02:39"
         }
     },
     "Dorama": {
