@@ -155,7 +155,7 @@
         const owner = 'CRarly'; // Substitua pelo seu usuário do GitHub
         const repo = 'Lista_Series'; // Nome do seu repositório
         const path = 'lista_de_serie.json'; // Nome do arquivo no GitHub
-        const token = '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'; // Substitua pelo seu token de acesso do GitHub
+        const token = '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'; // Substitua pelo seu token de acesso do GitHub
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
         const seriesList = JSON.parse(localStorage.getItem('seriesList')) || {};
@@ -236,52 +236,63 @@
                     headers: { 'Accept': 'application/vnd.github.v3.raw' }
                 });
 
-                if (!response.ok) throw new Error('Erro ao carregar arquivo do GitHub');
+                if (!response.ok) throw new Error('Erro ao carregar arquivo do GitHub. Verifique se o arquivo existe.');
 
                 const data = await response.json();
                 Object.assign(seriesList, data);
                 localStorage.setItem('seriesList', JSON.stringify(seriesList));
                 displaySeries();
-                alert('Lista carregada do GitHub com sucesso!');
+                alert('✅ Lista carregada do GitHub com sucesso!');
             } catch (error) {
                 console.error('Erro ao carregar:', error);
-                alert('Erro ao carregar a lista do GitHub.');
+                alert(`❌ Erro ao carregar a lista do GitHub: ${error.message}`);
             }
         }
 
         async function saveToGitHub() {
-            try {
-                const getResponse = await fetch(apiUrl, {
-                    headers: { Authorization: `token ${token}` }
-                });
+        try {
+            let sha = null;
 
-                const { sha } = getResponse.ok ? await getResponse.json() : { sha: null };
-                const content = btoa(unescape(encodeURIComponent(JSON.stringify(seriesList, null, 4))));
+            // 1️⃣ Buscar o SHA do arquivo existente
+            const shaResponse = await fetch(apiUrl, {
+                headers: { Authorization: `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+            });
 
-                const payload = {
-                    message: 'Atualizando lista_de_serie.json',
-                    content: content,
-                    sha: sha
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: {
-                        Authorization: `token ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    console.log('Lista salva no GitHub com sucesso!');
-                } else {
-                    throw new Error('Falha ao salvar no GitHub.');
-                }
-            } catch (error) {
-                console.error('Erro ao salvar:', error);
+            if (shaResponse.ok) {
+                const data = await shaResponse.json();
+                sha = data.sha; // Se o arquivo existir, capturamos o SHA
             }
+
+            // 2️⃣ Preparar conteúdo para salvar
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(seriesList, null, 4))));
+            const payload = {
+                message: sha ? 'Atualizando lista_de_serie.json' : 'Criando lista_de_serie.json',
+                content: content,
+                ...(sha && { sha }) // Só envia sha se ele existir
+            };
+
+            // 3️⃣ Requisição para criar/atualizar arquivo
+            const saveResponse = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (saveResponse.ok) {
+                alert(sha ? '✅ Arquivo atualizado com sucesso!' : '✅ Arquivo criado com sucesso!');
+            } else {
+                const errorData = await saveResponse.json();
+                console.error('Erro ao salvar:', errorData);
+                alert(`❌ Erro ao salvar: ${errorData.message}`);
+            }
+        } catch (error) {
+            console.error('Erro inesperado:', error);
+            alert(`❌ Erro inesperado: ${error.message}`);
         }
+    }
 
         function downloadJSON() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(seriesList, null, 4));
