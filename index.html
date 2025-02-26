@@ -131,6 +131,8 @@
         <div class="button-group">
             <button onclick="addSeries()">Adicionar/Atualizar</button>
             <button onclick="loadFromGitHub()">Carregar do GitHub</button>
+            <button onclick="saveToGitHub()">Salvar no GitHub</button>
+            <button onclick="downloadJSON()">Baixar JSON</button>
         </div>
 
         <table id="seriesTable">
@@ -153,7 +155,7 @@
         const owner = 'CRarly'; // Substitua pelo seu usuário do GitHub
         const repo = 'Lista_Series'; // Nome do seu repositório
         const path = 'lista_de_serie.json'; // Nome do arquivo no GitHub
-        const token = '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'; // Substitua pelo seu token de acesso do GitHub
+        const token = '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'; // Substitua pelo seu token de acesso do GitHub
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
         const seriesList = JSON.parse(localStorage.getItem('seriesList')) || {};
@@ -161,7 +163,6 @@
         function saveData() {
             localStorage.setItem('seriesList', JSON.stringify(seriesList));
             displaySeries();
-            saveToGitHub();
         }
 
         function addSeries() {
@@ -180,6 +181,7 @@
             if (!seriesList[category]) seriesList[category] = {};
             seriesList[category][name] = { season, episode, status, date };
             saveData();
+            saveToGitHub(); // Salva automaticamente no GitHub após adicionar/atualizar
 
             document.getElementById('name').value = '';
             document.getElementById('season').value = '';
@@ -216,6 +218,7 @@
             seriesList[category][name].status = seriesList[category][name].status === 'Finalizado' ? 'Não finalizado' : 'Finalizado';
             seriesList[category][name].date = new Date().toLocaleString();
             saveData();
+            saveToGitHub(); // Salva automaticamente no GitHub após alteração de status
         }
 
         function removeSeries(category, name) {
@@ -223,6 +226,7 @@
                 delete seriesList[category][name];
                 if (Object.keys(seriesList[category]).length === 0) delete seriesList[category];
                 saveData();
+                saveToGitHub(); // Salva automaticamente no GitHub após remoção
             }
         }
 
@@ -238,9 +242,10 @@
                 Object.assign(seriesList, data);
                 localStorage.setItem('seriesList', JSON.stringify(seriesList));
                 displaySeries();
-                console.log('Lista carregada do GitHub com sucesso!');
+                alert('Lista carregada do GitHub com sucesso!');
             } catch (error) {
                 console.error('Erro ao carregar:', error);
+                alert('Erro ao carregar a lista do GitHub.');
             }
         }
 
@@ -251,8 +256,8 @@
                 });
 
                 const { sha } = getResponse.ok ? await getResponse.json() : { sha: null };
-
                 const content = btoa(unescape(encodeURIComponent(JSON.stringify(seriesList, null, 4))));
+
                 const payload = {
                     message: 'Atualizando lista_de_serie.json',
                     content: content,
@@ -276,6 +281,16 @@
             } catch (error) {
                 console.error('Erro ao salvar:', error);
             }
+        }
+
+        function downloadJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(seriesList, null, 4));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "lista_de_serie.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            document.body.removeChild(downloadAnchor);
         }
 
         window.onload = loadFromGitHub;
