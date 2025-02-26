@@ -1,4 +1,154 @@
 {
+    "Série": {
+        "Daybreak": {
+            "season": "1",
+            "episode": "10",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:13:09"
+        },
+        "Locke e key": {
+            "season": "3",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:15:33"
+        },
+        "Titãs DC": {
+            "season": "2",
+            "episode": "1",
+            "status": "Finalizado",
+            "date": "26/02/2025, 01:48:31"
+        },
+        "The Umbrela Academy": {
+            "season": "4",
+            "episode": "6",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:18:20"
+        },
+        "Resident Evil": {
+            "season": "1",
+            "episode": "6",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:20:26"
+        },
+        "The witcher": {
+            "season": "3",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:24:07"
+        },
+        "One pierce": {
+            "season": "1",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:24:36"
+        },
+        "Avatar novo": {
+            "season": "1",
+            "episode": "4",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:25:18"
+        },
+        "Ruptura": {
+            "season": "2",
+            "episode": "7",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:32:21"
+        },
+        "Anéis de poder": {
+            "season": "2",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:34:25"
+        },
+        "Daryl Dixon": {
+            "season": "2",
+            "episode": "6",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:34:57"
+        },
+        "Fallout": {
+            "season": "1",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:37:15"
+        },
+        "Belas Maldicoes": {
+            "season": "2",
+            "episode": "6",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:38:12"
+        },
+        "Gen V": {
+            "season": "1",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:38:38"
+        },
+        "The boys": {
+            "season": "4",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:39:44"
+        },
+        "Yu yu hakusho": {
+            "season": "1",
+            "episode": "5",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:41:34"
+        },
+        "House of the Dragon": {
+            "season": "2",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:44:29"
+        }
+    },
+    "Desenho": {
+        "Desencanto": {
+            "season": "5",
+            "episode": "10",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:12:25"
+        },
+        "Arcane": {
+            "season": "2",
+            "episode": "9",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:16:12"
+        },
+        "Big mouth": {
+            "season": "7",
+            "episode": "10",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:29:33"
+        },
+        "Departamento de conspirações": {
+            "season": "2",
+            "episode": "8",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:30:42"
+        },
+        "Invencivel": {
+            "season": "2",
+            "episode": "5",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:33:24"
+        }
+    },
+    "Filme": {
+        "Spy x family": {
+            "season": "1",
+            "episode": "1",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:09:17"
+        },
+        "Jujutso Kaisen": {
+            "season": "1",
+            "episode": "1",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:27:24"
+        }
+    },
     "Anime": {
         "Solo Leveling": {
             "season": "2",
@@ -89,156 +239,6 @@
             "episode": "37",
             "status": "Finalizado",
             "date": "25/02/2025, 21:47:50"
-        }
-    },
-    "Filme": {
-        "Spy x family": {
-            "season": "1",
-            "episode": "1",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:09:17"
-        },
-        "Jujutso Kaisen": {
-            "season": "1",
-            "episode": "1",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:27:24"
-        }
-    },
-    "Desenho": {
-        "Desencanto": {
-            "season": "5",
-            "episode": "10",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:12:25"
-        },
-        "Arcane": {
-            "season": "2",
-            "episode": "9",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:16:12"
-        },
-        "Big mouth": {
-            "season": "7",
-            "episode": "10",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:29:33"
-        },
-        "Departamento de conspirações": {
-            "season": "2",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:30:42"
-        },
-        "Invencivel": {
-            "season": "2",
-            "episode": "5",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:33:24"
-        }
-    },
-    "Série": {
-        "Daybreak": {
-            "season": "1",
-            "episode": "10",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:13:09"
-        },
-        "Locke e key": {
-            "season": "3",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:15:33"
-        },
-        "Titãs DC": {
-            "season": "2",
-            "episode": "1",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:17:40"
-        },
-        "The Umbrela Academy": {
-            "season": "4",
-            "episode": "6",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:18:20"
-        },
-        "Resident Evil": {
-            "season": "1",
-            "episode": "6",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:20:26"
-        },
-        "The witcher": {
-            "season": "3",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:24:07"
-        },
-        "One pierce": {
-            "season": "1",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:24:36"
-        },
-        "Avatar novo": {
-            "season": "1",
-            "episode": "4",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:25:18"
-        },
-        "Ruptura": {
-            "season": "2",
-            "episode": "7",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:32:21"
-        },
-        "Anéis de poder": {
-            "season": "2",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:34:25"
-        },
-        "Daryl Dixon": {
-            "season": "2",
-            "episode": "6",
-            "status": "Não finalizado",
-            "date": "25/02/2025, 21:34:57"
-        },
-        "Fallout": {
-            "season": "1",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:37:15"
-        },
-        "Belas Maldicoes": {
-            "season": "2",
-            "episode": "6",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:38:12"
-        },
-        "Gen V": {
-            "season": "1",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:38:38"
-        },
-        "The boys": {
-            "season": "4",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:39:44"
-        },
-        "Yu yu hakusho": {
-            "season": "1",
-            "episode": "5",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:41:34"
-        },
-        "House of the Dragon": {
-            "season": "2",
-            "episode": "8",
-            "status": "Finalizado",
-            "date": "25/02/2025, 21:44:29"
         }
     },
     "Dorama": {
