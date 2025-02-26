@@ -152,11 +152,11 @@
     </div>
 
     <script>
-        const owner = 'CRarly'; // Substitua pelo seu usuário do GitHub
-        const repo = 'Lista_Series'; // Nome do seu repositório
-        const path = 'lista_de_serie.json'; // Nome do arquivo no GitHub
-        const token = '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'; // Substitua pelo seu token de acesso do GitHub
-        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+        const owner = 'CRarly'; // Usuário do GitHub
+    const repo = 'Lista_Series'; // Nome do repositório
+    const path = 'lista_de_serie.json'; // Caminho do arquivo
+    const token = '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'; // Token do GitHub
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
         const seriesList = JSON.parse(localStorage.getItem('seriesList')) || {};
 
@@ -230,69 +230,88 @@
             }
         }
 
+        let currentSha = null; // Variável global para armazenar o SHA
+
         async function loadFromGitHub() {
-            try {
-                const response = await fetch(apiUrl, {
-                    headers: { 'Accept': 'application/vnd.github.v3.raw' }
-                });
+    try {
+        const response = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/${path}`);
 
-                if (!response.ok) throw new Error('Erro ao carregar arquivo do GitHub. Verifique se o arquivo existe.');
+        if (!response.ok) throw new Error('Erro ao carregar o arquivo. Verifique se o arquivo existe.');
 
-                const data = await response.json();
-                Object.assign(seriesList, data);
-                localStorage.setItem('seriesList', JSON.stringify(seriesList));
-                displaySeries();
-                alert('✅ Lista carregada do GitHub com sucesso!');
-            } catch (error) {
-                console.error('Erro ao carregar:', error);
-                alert(`❌ Erro ao carregar a lista do GitHub: ${error.message}`);
-            }
-        }
+        const rawContent = await response.text();
+        const parsedContent = JSON.parse(rawContent); // ✅ Direto sem precisar atob
 
-        async function saveToGitHub() {
-        try {
-            let sha = null;
+        Object.assign(seriesList, parsedContent); // Atualiza a lista local
+        localStorage.setItem('seriesList', JSON.stringify(seriesList));
+        displaySeries();
 
-            // 1️⃣ Buscar o SHA do arquivo existente
-            const shaResponse = await fetch(apiUrl, {
-                headers: { Authorization: `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-            });
-
-            if (shaResponse.ok) {
-                const data = await shaResponse.json();
-                sha = data.sha; // Se o arquivo existir, capturamos o SHA
-            }
-
-            // 2️⃣ Preparar conteúdo para salvar
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify(seriesList, null, 4))));
-            const payload = {
-                message: sha ? 'Atualizando lista_de_serie.json' : 'Criando lista_de_serie.json',
-                content: content,
-                ...(sha && { sha }) // Só envia sha se ele existir
-            };
-
-            // 3️⃣ Requisição para criar/atualizar arquivo
-            const saveResponse = await fetch(apiUrl, {
-                method: 'PUT',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            });
-
-            if (saveResponse.ok) {
-                alert(sha ? '✅ Arquivo atualizado com sucesso!' : '✅ Arquivo criado com sucesso!');
-            } else {
-                const errorData = await saveResponse.json();
-                console.error('Erro ao salvar:', errorData);
-                alert(`❌ Erro ao salvar: ${errorData.message}`);
-            }
-        } catch (error) {
-            console.error('Erro inesperado:', error);
-            alert(`❌ Erro inesperado: ${error.message}`);
-        }
+        alert('✅ Lista carregada com sucesso!');
+    } catch (error) {
+        console.error('❌ Erro ao carregar:', error);
+        alert(`❌ Erro: ${error.message}`);
     }
+}
+
+
+          async function saveToGitHub() {
+    const owner = 'CRarly'; // Usuário do GitHub
+    const repo = 'Lista_Series'; // Nome do repositório
+    const path = 'lista_de_serie.json'; // Caminho do arquivo
+    const token = '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'; // Token do GitHub
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    try {
+        // 🔍 1️⃣ Buscar o SHA atual do arquivo
+        const shaResponse = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: 'application/vnd.github.v3+json'
+            }
+        });
+
+        let sha = null;
+        if (shaResponse.ok) {
+            const data = await shaResponse.json();
+            sha = data.sha;
+            console.log(`🔑 SHA encontrado: ${sha}`);
+        } else if (shaResponse.status === 404) {
+            console.warn('⚠️ Arquivo não encontrado, criando um novo.');
+        } else {
+            throw new Error(`Erro ao obter SHA: ${shaResponse.status} - ${shaResponse.statusText}`);
+        }
+
+        // 📦 2️⃣ Preparar conteúdo atualizado
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(seriesList, null, 4))));
+        const payload = {
+            message: sha ? 'Atualizando lista_de_serie.json' : 'Criando lista_de_serie.json',
+            content: content,
+            ...(sha && { sha }) // Inclui o SHA se estiver atualizando
+        };
+
+        // 💾 3️⃣ Enviar requisição para salvar no GitHub
+        const saveResponse = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (saveResponse.ok) {
+            alert(sha ? '✅ Arquivo atualizado com sucesso!' : '✅ Arquivo criado com sucesso!');
+            console.log(await saveResponse.json());
+        } else {
+            const errorData = await saveResponse.json();
+            console.error('❌ Erro ao salvar:', errorData);
+            alert(`❌ Erro ao salvar: ${errorData.message}`);
+        }
+    } catch (error) {
+        console.error('🚫 Erro inesperado:', error);
+        alert(`❌ Erro inesperado: ${error.message}`);
+    }
+}
 
         function downloadJSON() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(seriesList, null, 4));
