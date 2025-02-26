@@ -1,32 +1,64 @@
 {
-    "Série": {
-        "tyty": {
-            "season": "5",
-            "episode": "3",
-            "status": "Não finalizado",
-            "date": "26/02/2025, 00:38:46"
+    "Anime": {
+        "Solo Leveling": {
+            "season": "2",
+            "episode": "20",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:06:30"
         },
-        "Teste454": {
+        "Mob Psycho 100": {
+            "season": "3",
+            "episode": "1",
+            "status": "Não finalizado",
+            "date": "25/02/2025, 21:06:26"
+        },
+        "Dr. Stone": {
             "season": "4",
-            "episode": "1",
-            "status": "Não finalizado",
-            "date": "26/02/2025, 00:42:50"
-        }
-    },
-    "Desenho": {
-        "Trilha da Graduação - UCB": {
+            "episode": "7",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:07:03"
+        },
+        "My hero academy": {
+            "season": "7",
+            "episode": "159",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:07:44"
+        },
+        "Spy x family": {
+            "season": "2",
+            "episode": "37",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:08:36"
+        },
+        "Dan da Dan": {
             "season": "1",
-            "episode": "1",
+            "episode": "12",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:10:08"
+        },
+        "The rising of the Shields hero": {
+            "season": "3",
+            "episode": "12",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:11:04"
+        },
+        "Hora de aventura": {
+            "season": "4",
+            "episode": "13",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:14:08"
+        },
+        "Dungeon meshi": {
+            "season": "1",
+            "episode": "24",
+            "status": "Finalizado",
+            "date": "25/02/2025, 21:14:41"
+        },
+        "Vinland Saga": {
+            "season": "1",
+            "episode": "5",
             "status": "Não finalizado",
-            "date": "25/02/2025, 22:38:29"
-        }
-    },
-    "Filme": {
-        "xvvc": {
-            "season": "5",
-            "episode": "4",
-            "status": "Não finalizado",
-            "date": "26/02/2025, 00:31:43"
+            "date": "25/02/2025, 21:19:20"
         }
     }
 }
